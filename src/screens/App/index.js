@@ -74,7 +74,11 @@ class App extends Component {
   render() {
     return (
       <div>
-        <AppBar title='Pokédex' style={appBarStyle} />
+        <AppBar
+          onLeftIconButtonTouchTap={this.handleDrawerToggle}
+          style={appBarStyle}
+          title='Pokédex'
+        />
         <Drawer
           docked={this.state.drawerDocked}
           open={this.state.drawerOpen}
