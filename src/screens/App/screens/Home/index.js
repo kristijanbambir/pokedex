@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroller';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { fetchPokemons } from '../../../../shared/actions/pokemons';
 import Progress from '../../shared/components/Progress';
-import PokemonCard from './components/PokemonCard';
+import PokemonCard from '../../shared/components/PokemonCard';
 
 class Home extends Component {
 
@@ -14,8 +14,6 @@ class Home extends Component {
   }
 
   loadItems(pageToLoad) {
-    console.log('Load items called');
-    console.log('pageToLoad', pageToLoad);
     if (!this.props.isFetching) {
       this.props.dispatch(fetchPokemons(this.props.next));
     }
@@ -23,23 +21,21 @@ class Home extends Component {
 
   render() {
     return (
-      <Grid>
-        <Row>
-          <InfiniteScroll
-            pageStart={-1}
-            loadMore={this.loadItems}
-            hasMore={true || false}
-            loader={<Progress />}
-          >
-            {this.props.pokemons.map((pokemon) => (
-              <Col key={pokemon.name} sm={6} md={4}>
-                <PokemonCard name={pokemon.name} />
-              </Col>
-            ))}
-          </InfiniteScroll>
+      <Row>
+        <InfiniteScroll
+          pageStart={-1}
+          loadMore={this.loadItems}
+          hasMore={true || false}
+          loader={<Progress />}
+        >
+          {this.props.pokemons.map((pokemon) => (
+            <Col key={pokemon.name} sm={6} md={4}>
+              <PokemonCard name={pokemon.name} />
+            </Col>
+          ))}
+        </InfiniteScroll>
 
-        </Row>
-      </Grid>
+      </Row>
     );
   }
 
