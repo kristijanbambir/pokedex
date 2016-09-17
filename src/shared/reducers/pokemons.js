@@ -4,7 +4,8 @@ import {
 } from '../actions/pokemons';
 
 const pokemons = (state = {
-  isFetching: false
+  isFetching: false,
+  values: []
 }, action) => {
   switch (action.type) {
     case REQUEST_POKEMONS:
@@ -12,9 +13,12 @@ const pokemons = (state = {
         isFetching: true
       });
     case RECEIVE_POKEMONS:
+      console.log('RECEIVE_POKEMONS');
+      console.log(action);
       return Object.assign({}, state, {
         isFetching: false,
-        values: action.pokemons
+        next: action.next,
+        values: state.values.concat(action.values)
       });
     default:
       return state;

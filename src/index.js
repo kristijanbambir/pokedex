@@ -6,7 +6,12 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { teal400, cyan900 } from 'material-ui/styles/colors';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { useScroll } from 'react-router-scroll';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
 import routes from './config/routes';
+import rootReducer from './shared/reducers';
 import './index.css';
 
 const muiTheme = getMuiTheme({
@@ -15,6 +20,16 @@ const muiTheme = getMuiTheme({
     primary2Color: cyan900
   }
 });
+
+const loggerMiddleware = createLogger();
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(
+    thunkMiddleware,
+    loggerMiddleware
+  )
+);
 
 class Theme extends React.Component {
 
@@ -26,11 +41,13 @@ class Theme extends React.Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <Router
-          history={browserHistory}
-          routes={routes}
-          render={applyRouterMiddleware(useScroll())}
-        />
+        <Provider store={store}>
+          <Router
+            history={browserHistory}
+            routes={routes}
+            render={applyRouterMiddleware(useScroll())}
+          />
+        </Provider>
       </MuiThemeProvider>
     );
   }

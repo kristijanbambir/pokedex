@@ -3,9 +3,7 @@ import AppBar from 'material-ui/AppBar';
 
 const App = (props) => (
   <div>
-    <AppBar
-      title='Pokédex'
-    />
+    <AppBar title='Pokédex' style={{ marginBottom: '20px' }} />
     {props.children}
   </div>
 );
