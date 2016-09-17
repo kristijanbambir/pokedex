@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Row, Col } from 'react-bootstrap';
+import PokemonCard from '../../shared/components/PokemonCard';
 
-const MyPokemon = () => (
-  <div>{'My Pokemon'}</div>
-);
+class MyPokemon extends Component {
 
-export default MyPokemon;
+  render() {
+    return (
+      <Row>
+        {this.props.pokemons.map((pokemon) => (
+          <Col key={pokemon.name} sm={6} md={4}>
+            <PokemonCard {...pokemon} />
+          </Col>
+        ))}
+      </Row>
+    );
+  }
+
+}
+
+const mapStateToProps = (state) => {
+  const { values } = state.pokemons;
+  return {
+    pokemons: values.filter(value => value.inList)
+  }
+};
+
+export default connect(mapStateToProps)(MyPokemon);
