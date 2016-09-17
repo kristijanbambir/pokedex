@@ -30,7 +30,7 @@ class Home extends Component {
         >
           {this.props.pokemons.map((pokemon) => (
             <Col key={pokemon.name} sm={6} md={4}>
-              <PokemonCard name={pokemon.name} />
+              <PokemonCard {...pokemon} />
             </Col>
           ))}
         </InfiniteScroll>

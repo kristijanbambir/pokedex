@@ -7,7 +7,7 @@ import MyPokemon from '../screens/App/screens/MyPokemon';
 const routes = (
   <Route path='/' component={App}>
     <IndexRoute component={Home} />
-    <Route path='mypokemon' component={MyPokemon} />
+    <Route path='my' component={MyPokemon} />
   </Route>
 );
 

@@ -7,7 +7,7 @@ import { Link, withRouter } from 'react-router';
 import { Grid } from 'react-bootstrap';
 
 const HOME_PATH = '/';
-const MY_POKEMON_PATH = '/mypokemon';
+const MY_POKEMON_PATH = '/my';
 
 const DRAWER_DOCKED_MIN_WINDOW_WIDTH = 992;
 const DRAWER_WIDTH = 200;
@@ -91,13 +91,13 @@ class App extends Component {
             <MenuItem
               onTouchTap={this.handleDrawerClose}
               containerElement={<Link to={HOME_PATH} activeClassName='active' onlyActiveOnIndex />}
-              primaryText='Pokémon'
+              primaryText='All Pokémons'
               style={this.props.location.pathname === HOME_PATH ? activeMenuItemStyle : menuItemStyle}
             />
             <MenuItem
               onTouchTap={this.handleDrawerClose}
               containerElement={<Link to={MY_POKEMON_PATH} activeClassName='active' />}
-              primaryText='My list'
+              primaryText='My Pokémons'
               style={this.props.location.pathname === MY_POKEMON_PATH ? activeMenuItemStyle : menuItemStyle}
             />
           </Menu>
