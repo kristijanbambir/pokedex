@@ -2,6 +2,7 @@
   "name": "pokedex",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://kristijanbambir.github.io/pokedex",
   "devDependencies": {
     "react-scripts": "0.4.1"
   },
