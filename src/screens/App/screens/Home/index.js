@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroller';
 import { Row, Col } from 'react-bootstrap';
 import { fetchPokemons } from '../../../../shared/actions/pokemons';
-import Progress from '../../shared/components/Progress';
 import PokemonCard from '../../shared/components/PokemonCard';
+import Progress from '../../shared/components/Progress';
 
 class Home extends Component {
 
@@ -34,7 +34,6 @@ class Home extends Component {
             </Col>
           ))}
         </InfiniteScroll>
-
       </Row>
     );
   }

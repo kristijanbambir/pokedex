@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
+import Empty from '../../shared/components/Empty';
 import PokemonCard from '../../shared/components/PokemonCard';
 
 class MyPokemon extends Component {
 
   render() {
+    if (!this.props.pokemons || this.props.pokemons.length === 0) {
+      return <Empty />;
+    }
     return (
       <Row>
         {this.props.pokemons.map((pokemon) => (
