@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router, browserHistory, applyRouterMiddleware } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { teal400, cyan900 } from 'material-ui/styles/colors';
+import { red700 } from 'material-ui/styles/colors';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { useScroll } from 'react-router-scroll';
 import { Provider } from 'react-redux';
@@ -16,8 +16,7 @@ import './index.css';
 
 const muiTheme = getMuiTheme({
   palette: {
-    primary1Color: teal400,
-    primary2Color: cyan900
+    primary1Color: red700
   }
 });
 

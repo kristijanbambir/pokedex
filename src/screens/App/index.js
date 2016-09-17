@@ -17,7 +17,7 @@ const menuItemStyle = {
 }
 
 const activeMenuItemStyle = {
-  backgroundColor: 'rgba(0, 0, 0, 0.2)',
+  color: '#D32F2F',
   width: `${DRAWER_WIDTH}px`
 };
 
