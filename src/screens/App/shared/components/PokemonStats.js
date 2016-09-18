@@ -52,10 +52,6 @@ const PokemonStats = (props) => (
         />
       </Col>
     </Row>
-    <Stat
-      name='Moves'
-      value={props.moves.map(move => move.move.name).join(', ')}
-    />
     <br />
     <Subheader style={{ paddingLeft: 0 }}>
       {'Stats'}
@@ -78,6 +74,10 @@ const PokemonStats = (props) => (
         ))}
       </TableBody>
     </Table>
+    <Stat
+      name='Moves'
+      value={props.moves.map(move => move.move.name).join(', ')}
+    />
   </div>
 );
 
