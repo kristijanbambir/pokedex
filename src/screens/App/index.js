@@ -8,7 +8,7 @@ import { Grid } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 const HOME_PATH = '/';
-const MY_POKEMON_PATH = '/my';
+const MY_POKEMON_PATH = '/mypokemon';
 
 const DRAWER_DOCKED_MIN_WINDOW_WIDTH = 992;
 const DRAWER_WIDTH = 200;
