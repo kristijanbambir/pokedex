@@ -48,6 +48,9 @@ class PokemonDetails extends Component {
           open={this.state.open}
           onRequestClose={this.handleClose}
           autoScrollBodyContent
+          contentStyle={{ width: '90%' }}
+          titleStyle={{ border: 'none' }}
+          actionsContainerStyle={{ border: 'none' }}
         >
           <div style={{ padding: '10px 0' }}>
             {this.props.statsFetching ? <Progress /> : <PokemonStats {...this.props.stats} />}

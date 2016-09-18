@@ -106,13 +106,13 @@ class App extends Component {
             <MenuItem
               onTouchTap={this.handleDrawerClose}
               containerElement={<Link to={HOME_PATH} activeClassName='active' onlyActiveOnIndex />}
-              primaryText='All Pokémons'
+              primaryText='All Pokémon'
               style={this.props.location.pathname === HOME_PATH ? activeMenuItemStyle : menuItemStyle}
             />
             <MenuItem
               onTouchTap={this.handleDrawerClose}
               containerElement={<Link to={MY_POKEMON_PATH} activeClassName='active' />}
-              primaryText={`My Pokémons (${this.props.pokemonsInListCount})`}
+              primaryText={`My Pokémon (${this.props.pokemonsInListCount})`}
               style={this.props.location.pathname === MY_POKEMON_PATH ? activeMenuItemStyle : menuItemStyle}
             />
           </Menu>
