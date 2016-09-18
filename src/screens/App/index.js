@@ -5,6 +5,7 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import { Link, withRouter } from 'react-router';
 import { Grid } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 const HOME_PATH = '/';
 const MY_POKEMON_PATH = '/my';
@@ -111,7 +112,7 @@ class App extends Component {
             <MenuItem
               onTouchTap={this.handleDrawerClose}
               containerElement={<Link to={MY_POKEMON_PATH} activeClassName='active' />}
-              primaryText='My Pokémons'
+              primaryText={`My Pokémons (${this.props.pokemonsInListCount})`}
               style={this.props.location.pathname === MY_POKEMON_PATH ? activeMenuItemStyle : menuItemStyle}
             />
           </Menu>
@@ -127,4 +128,11 @@ class App extends Component {
 
 }
 
-export default withRouter(App);
+const mapStateToProps = (state) => {
+  const { values: pokemons } = state.pokemons;
+  return {
+    pokemonsInListCount: pokemons.filter(pokemon => pokemon.inList).length
+  }
+};
+
+export default connect(mapStateToProps)(withRouter(App));
