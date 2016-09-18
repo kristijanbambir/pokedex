@@ -3,6 +3,7 @@ import { Card, CardActions, CardHeader } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import { connect } from 'react-redux';
 import { toggleInList } from '../../../../shared/actions/pokemons';
+import PokemonDetails from './PokemonDetails';
 
 class PokemonCard extends Component {
 
@@ -16,15 +17,22 @@ class PokemonCard extends Component {
   }
 
   render() {
+    const toggleInListAction = (
+      <FlatButton
+        label={this.props.inList ? 'Remove from list' : 'Add to list'}
+        onTouchTap={this.handleListToggle}
+      />
+    );
+
     return (
       <Card style={{ marginBottom: '20px' }}>
         <CardHeader title={this.props.name} />
         <CardActions>
-          <FlatButton label='View details' />
-          <FlatButton
-            label={this.props.inList ? 'Remove from list' : 'Add to list'}
-            onTouchTap={this.handleListToggle}
+          <PokemonDetails
+            toggleInListAction={toggleInListAction}
+            name={this.props.name}
           />
+          {toggleInListAction}
         </CardActions>
       </Card>
     );
