@@ -31,6 +31,7 @@ class PokemonCard extends Component {
           <PokemonDetails
             toggleInListAction={toggleInListAction}
             name={this.props.name}
+            url={this.props.url}
           />
           {toggleInListAction}
         </CardActions>

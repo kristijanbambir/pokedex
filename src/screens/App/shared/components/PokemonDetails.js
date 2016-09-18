@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import { connect } from 'react-redux';
+import Progress from './Progress';
+import { fetchPokemonStatsIfNeeded } from '../../../../shared/actions/pokemons';
 
 class PokemonDetails extends Component {
 
@@ -15,6 +18,10 @@ class PokemonDetails extends Component {
 
   handleOpen() {
     this.setState({ open: true });
+    this.props.dispatch(fetchPokemonStatsIfNeeded(
+      this.props.name,
+      this.props.url
+    ));
   }
 
   handleClose() {
@@ -31,6 +38,13 @@ class PokemonDetails extends Component {
       />
     ];
 
+    let body;
+    if (this.props.statsFetching) {
+      body = <Progress />
+    } else {
+      body = JSON.stringify(this.props.stats);
+    }
+
     return (
       <span>
         <FlatButton label='View details' onTouchTap={this.handleOpen} />
@@ -39,8 +53,9 @@ class PokemonDetails extends Component {
           actions={actions}
           open={this.state.open}
           onRequestClose={this.handleClose}
+          autoScrollBodyContent
         >
-          {`Stats for ${this.props.name}`}
+          {body}
         </Dialog>
       </span>
     );
@@ -48,4 +63,13 @@ class PokemonDetails extends Component {
 
 }
 
-export default PokemonDetails;
+const mapStateToProps = (state, props) => {
+  const { values } = state.pokemons;
+  const pokemon = values.filter(value => value.name === props.name)[0];
+  return {
+    stats: pokemon.stats,
+    statsFetching: pokemon.statsFetching
+  }
+};
+
+export default connect(mapStateToProps)(PokemonDetails);
