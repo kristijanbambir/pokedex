@@ -40,6 +40,16 @@ class App extends Component {
     this.handleDrawerToggle = this.handleDrawerToggle.bind(this);
   }
 
+  componentDidMount() {
+    window.onresize = () => {
+      this.setState({
+        drawerDocked: this.shouldBeDocked(),
+        drawerOpen: this.shouldBeOpen(),
+        drawerZDepth: this.zDepth()
+      });
+    };
+  }
+
   handleDrawerClose() {
     this.setState({ drawerOpen: this.shouldBeOpen() })
   }
