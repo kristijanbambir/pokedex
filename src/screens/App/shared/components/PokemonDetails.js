@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { connect } from 'react-redux';
@@ -58,6 +58,15 @@ class PokemonDetails extends Component {
   }
 
 }
+
+PokemonDetails.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  stats: PropTypes.object,
+  statsFetching: PropTypes.bool.isRequired,
+  toggleInListAction: PropTypes.element.isRequired,
+  url: PropTypes.string.isRequired
+};
 
 const mapStateToProps = (state, props) => {
   const { values } = state.pokemons;

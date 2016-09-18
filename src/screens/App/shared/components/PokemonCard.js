@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Card, CardActions, CardHeader } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import { connect } from 'react-redux';
@@ -40,5 +40,12 @@ class PokemonCard extends Component {
   }
 
 }
+
+PokemonCard.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  inList: PropTypes.bool.isRequired,
+  name: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired
+};
 
 export default connect()(PokemonCard);

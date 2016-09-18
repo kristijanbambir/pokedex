@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroller';
 import { Row, Col } from 'react-bootstrap';
@@ -39,6 +39,12 @@ class Home extends Component {
   }
 
 }
+
+Home.propTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  next: PropTypes.string,
+  pokemons: PropTypes.array
+};
 
 const mapStateToProps = (state) => {
   const { isFetching, next, values: pokemons } = state.pokemons;

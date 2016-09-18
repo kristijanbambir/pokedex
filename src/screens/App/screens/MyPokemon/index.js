@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import Empty from '../../shared/components/Empty';
@@ -22,6 +22,10 @@ class MyPokemon extends Component {
   }
 
 }
+
+MyPokemon.propTypes = {
+  pokemons: PropTypes.array
+};
 
 const mapStateToProps = (state) => {
   const { values } = state.pokemons;
