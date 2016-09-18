@@ -42,16 +42,20 @@ const PokemonStats = (props) => (
       <Col md={3} sm={6}>
         <Stat
           name='Abilities'
-          value={props.abilities.map(ability => ability.ability).map(ability => ability.name).join(', ')}
+          value={props.abilities.map(ability => ability.ability.name).join(', ')}
         />
       </Col>
       <Col md={3} sm={6}>
         <Stat
           name='Types'
-          value={props.types.map(type => type.type).map(type => type.name).join(', ')}
+          value={props.types.map(type => type.type.name).join(', ')}
         />
       </Col>
     </Row>
+    <Stat
+      name='Moves'
+      value={props.moves.map(move => move.move.name).join(', ')}
+    />
     <br />
     <Subheader style={{ paddingLeft: 0 }}>
       {'Stats'}
