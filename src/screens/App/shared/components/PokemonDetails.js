@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import { connect } from 'react-redux';
-import Progress from './Progress';
 import { fetchPokemonStatsIfNeeded } from '../../../../shared/actions/pokemons';
+import Progress from './Progress';
+import PokemonStats from './PokemonStats';
 
 class PokemonDetails extends Component {
 
@@ -38,16 +39,9 @@ class PokemonDetails extends Component {
       />
     ];
 
-    let body;
-    if (this.props.statsFetching) {
-      body = <Progress />
-    } else {
-      body = JSON.stringify(this.props.stats);
-    }
-
     return (
       <span>
-        <FlatButton label='View details' onTouchTap={this.handleOpen} />
+        <FlatButton label='Stats' onTouchTap={this.handleOpen} />
         <Dialog
           title={this.props.name}
           actions={actions}
@@ -55,7 +49,9 @@ class PokemonDetails extends Component {
           onRequestClose={this.handleClose}
           autoScrollBodyContent
         >
-          {body}
+          <div style={{ padding: '10px 0' }}>
+            {this.props.statsFetching ? <Progress /> : <PokemonStats {...this.props.stats} />}
+          </div>
         </Dialog>
       </span>
     );

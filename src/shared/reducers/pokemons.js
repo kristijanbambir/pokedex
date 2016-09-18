@@ -5,6 +5,7 @@ import {
   REQUEST_POKEMON_STATS,
   RECEIVE_POKEMON_STATS
 } from '../actions/pokemons';
+import { capitalizeFirstLetter } from '../utils/stringUtils';
 
 const pokemons = (state = {
   isFetching: false,
@@ -20,6 +21,7 @@ const pokemons = (state = {
         isFetching: false,
         next: action.next,
         values: state.values.concat(action.values.map(value => {
+          value.name = capitalizeFirstLetter(value.name);
           value.inList = false;
           value.statsFetching = false;
           return value;
