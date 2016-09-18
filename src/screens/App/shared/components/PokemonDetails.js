@@ -41,7 +41,7 @@ class PokemonDetails extends Component {
 
     return (
       <span>
-        <FlatButton label='Stats' onTouchTap={this.handleOpen} />
+        <FlatButton label='Details' onTouchTap={this.handleOpen} />
         <Dialog
           title={this.props.name}
           actions={actions}
