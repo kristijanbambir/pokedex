@@ -10,12 +10,16 @@ class Home extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      firstLoadOccurred: false
+    }
     this.loadItems = this.loadItems.bind(this);
   }
 
   loadItems(pageToLoad) {
     if (!this.props.isFetching) {
       this.props.dispatch(fetchPokemons(this.props.next));
+      this.setState({ firstLoadOccurred: true });
     }
   }
 
@@ -23,9 +27,9 @@ class Home extends Component {
     return (
       <Row>
         <InfiniteScroll
-          pageStart={-1}
+          pageStart={0}
           loadMore={this.loadItems}
-          hasMore={true || false}
+          hasMore={!this.state.firstLoadOccurred || this.props.next !== undefined}
           loader={<Progress />}
         >
           {this.props.pokemons.map((pokemon) => (
