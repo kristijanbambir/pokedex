@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import { connect } from 'react-redux';
 import { fetchPokemonStatsIfNeeded } from '../../../../shared/actions/pokemons';
 import Progress from './Progress';
 import PokemonStats from './PokemonStats';
@@ -71,13 +70,4 @@ PokemonDetails.propTypes = {
   url: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state, props) => {
-  const { values } = state.pokemons;
-  const pokemon = values.filter(value => value.name === props.name)[0];
-  return {
-    stats: pokemon.stats,
-    statsFetching: pokemon.statsFetching
-  }
-};
-
-export default connect(mapStateToProps)(PokemonDetails);
+export default PokemonDetails;

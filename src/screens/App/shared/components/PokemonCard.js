@@ -30,8 +30,7 @@ class PokemonCard extends Component {
         <CardActions>
           <PokemonDetails
             toggleInListAction={toggleInListAction}
-            name={this.props.name}
-            url={this.props.url}
+            {...this.props}
           />
           {toggleInListAction}
         </CardActions>
@@ -45,6 +44,8 @@ PokemonCard.propTypes = {
   dispatch: PropTypes.func.isRequired,
   inList: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
+  stats: PropTypes.object,
+  statsFetching: PropTypes.bool.isRequired,
   url: PropTypes.string.isRequired
 };
 
